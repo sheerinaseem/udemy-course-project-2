@@ -117,15 +117,19 @@ public class TextController : MonoBehaviour {
 
     void Courtyard()
     {
-        text.text = "You are FREE! \n\n" +
+        text.text = "You walk through the courtyard dressed as a cleaner." +
+                    "The guard tips his hat at you as you walk past, claiming your freedom." +
+                    "Your heart races as you walk intp the sunset.\n\n" +
                     "Press P to Play again.";
         if (Input.GetKeyDown(KeyCode.P)) { myState = States.cell; }
     }
 
     void Corridor_0()
     {
-        text.text = "You are in a corridor now! \n\n" +
-                    "Press S to take the Stairs, F to go to Floor area, C for Closet.";
+        text.text = "You're out of your cell, but not out of trouble. " +
+                    "You are in the corridor, there's a closet and some stairs leading to "+
+                    "the courtyard. There's also various detrius on the floor. \n\n" +
+                    "Press S to take the Stairs, F to inspect the Floor, C to view the Closet.";
         if (Input.GetKeyDown(KeyCode.S))            { myState = States.stairs_0; }
         else if (Input.GetKeyDown(KeyCode.F))       { myState = States.floor; }
         else if (Input.GetKeyDown(KeyCode.C))       { myState = States.closet_door; }
@@ -133,14 +137,16 @@ public class TextController : MonoBehaviour {
 
     void Stairs_0()
     {
-        text.text = "Nothing you will find here that can help you escape. Let's go back to the corridor.\n\n" +
+        text.text = "You start walking up the stairs towards the outside light. " +
+                    "You realize it's not break time. You will be caught immediately. "+
+                    "You slither back down the stairs and reconsider.\n\n"+
                     "Press R to return to the corridor.";
         if (Input.GetKeyDown(KeyCode.R)) { myState = States.corridor_0; }
     }
 
     void Floor()
     {
-        text.text = "So you're on the floor. Hmmm what is that hairclip?\n\n" +
+        text.text = "You found a hairclip on the floor.\n\n" +
                     "Press T to take the clip and or R to return to the corridor.";
         if (Input.GetKeyDown(KeyCode.R)) { myState = States.corridor_0; }
         else if (Input.GetKeyDown(KeyCode.T)) { myState = States.corridor_1; }
@@ -148,7 +154,8 @@ public class TextController : MonoBehaviour {
 
     void Closet_door()
     {
-        text.text = "This door of this closet seems locked. You will need something to unlock it.\n\n" +
+        text.text = "You are looking at a closet door, unfortunately it's locked. " +
+                    "Maybe you could find something around to help encourage it open?\n\n"+
                     "Press R to return to the corridor.";
         if (Input.GetKeyDown(KeyCode.R)) { myState = States.corridor_0; }
     }
@@ -178,7 +185,7 @@ public class TextController : MonoBehaviour {
 
     void Corridor_2()
     {
-        text.text = "There is staircase. See where it leads you?\n\n" +
+        text.text = "Back in the corridor, having declined to dress as a cleaner.\n\n" +
                     "Press S to use the Hairclip or R to return to the Closet.";
         if (Input.GetKeyDown(KeyCode.S)) { myState = States.stairs_2; }
         else if (Input.GetKeyDown(KeyCode.R)) { myState = States.in_closet; }
@@ -186,18 +193,20 @@ public class TextController : MonoBehaviour {
 
     void In_closet()
     {
-        text.text = "Time to disguise yourself as a jailer. Pick up that dress and get going.\n\n" +
-                    "Press D to Disguise or R to return to the corridor 1.";
-        if (Input.GetKeyDown(KeyCode.R)) { myState = States.corridor_1; }
+        text.text = "Inside the closet you see a cleaner's uniform that looks about your size. " +
+                    "Seems like your day is picking up.\n\n"+
+                    "Press D to Disguise or R to return to the Corridor 1.";
+        if (Input.GetKeyDown(KeyCode.R)) { myState = States.corridor_3; }
         else if (Input.GetKeyDown(KeyCode.D)) { myState = States.corridor_3; }
     }
 
     void Corridor_3()
     {
-        text.text = "There is a way to courtyard. Go ahead.\n\n" +
-                    "Press C to go to courtyard or R to return to the corridor 3.";
-        if (Input.GetKeyDown(KeyCode.R)) { myState = States.corridor_3; }
-        else if (Input.GetKeyDown(KeyCode.C)) { myState = States.courtyard; }
+        text.text = "You're standing back in the corridor, now convincingly dressed as a cleaner." +
+                    "You strongly consider the run for the freedom.\n\n"+
+                    "Press S to take the Stairs or U to undress.";
+        if (Input.GetKeyDown(KeyCode.S)) { myState = States.courtyard; }
+        else if (Input.GetKeyDown(KeyCode.U)) { myState = States.in_closet; }
     }
 
 }
